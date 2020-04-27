@@ -1,5 +1,7 @@
 package id.ac.polinema.retrofit2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -75,12 +77,26 @@ public class Post extends AbstractItem<Post, Post.ViewHolder> {
         }
 
         @Override
-        public void bindView(Post item, List<Object> payloads) {
+        public void bindView(final Post item, List<Object> payloads) {
             TextId_siswa.setText(item.id_siswa);
             TextNama.setText(item.nama);
             TextAlamat.setText(item.alamat);
             TextJk.setText(item.jenis_kelamin);
             TextNo.setText(item.no_telp);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    Context context = itemView.getContext();
+                    Intent intent = new Intent(context, UbahActivity.class);
+                    intent.putExtra("id_siswa", item.id_siswa);
+                    intent.putExtra("nama", item.nama);
+                    intent.putExtra("alamat", item.alamat);
+                    intent.putExtra("jenis_kelamin", item.jenis_kelamin);
+                    intent.putExtra("no_telp", item.no_telp);
+                    context.startActivity(intent);
+                }
+            });
         }
 
         @Override

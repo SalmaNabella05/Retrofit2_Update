@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         final List mahasiswa = new ArrayList<>();
 
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("https://nursalmanabella.000webhostapp.com/index.php/Mahasiswa/")
+//                .baseUrl("https://nursalmanabella.000webhostapp.com/index.php/Mahasiswa/")
+                .baseUrl("http://192.168.100.244/server_mobile/index.php/mahasiswa/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
